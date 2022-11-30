@@ -78,9 +78,7 @@ public class Context {
     }
 
     public void moveCourseToTimeslot(Long courseId, String timeslotId) {
-        Course course = getCourseWithId(courseId);
-        TimeSlot timeslot = getTimeslotWithId(timeslotId);
-        course.setTimeslot(timeslot);
-        System.out.println("Dropped: " + course + timeslot);
+        getCourseWithId(courseId).setTimeslot(getTimeslotWithId(timeslotId));
+        System.out.println("Dropped: " + getCourseWithId(courseId) + getTimeslotWithId(timeslotId));
     }
 }
