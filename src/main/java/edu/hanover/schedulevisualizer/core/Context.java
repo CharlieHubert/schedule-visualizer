@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Context {
     private static Context instance = new Context();//creates one
-    private static Map<String, TimeSlot> createdTimeslots = new HashMap<>();
+    private static Map<String, TimeSlot> stringToTimeSlotHashMap = new HashMap<>();
     private List<MyObserver<List<Course>>> observers = new ArrayList<>();
     private List<Course> courses;
 
@@ -37,10 +37,10 @@ public class Context {
     }
 
     private static TimeSlot addIfNeededThenReturn(TimeSlot timeSlot) {
-        if (createdTimeslots.containsKey(timeSlot.getId())) {
-            return createdTimeslots.get(timeSlot.getId());
+        if (stringToTimeSlotHashMap.containsKey(timeSlot.getId())) {
+            return stringToTimeSlotHashMap.get(timeSlot.getId());
         }
-        createdTimeslots.put(timeSlot.getId(), timeSlot);
+        stringToTimeSlotHashMap.put(timeSlot.getId(), timeSlot);
         return timeSlot;
     }
 
@@ -74,7 +74,7 @@ public class Context {
 
     public TimeSlot getTimeslotWithId(String timeslotId) {
         // TODO: Add error-checking if id doesn't exist
-        return createdTimeslots.get(timeslotId);
+        return stringToTimeSlotHashMap.get(timeslotId);
     }
 
     public void moveCourseToTimeslot(Long courseId, String timeslotId) {
