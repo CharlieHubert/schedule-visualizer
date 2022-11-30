@@ -11,10 +11,6 @@ public class MainView extends HBox {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "main-view.fxml"));
         fxmlLoader.setRoot(this);
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+        SidePanel.tryCatchOperation(fxmlLoader);
     }
 }
