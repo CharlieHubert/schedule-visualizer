@@ -27,11 +27,7 @@ public class DayColumn extends VBox {
                 "dayColumn-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+        SidePanel.tryCatchOperation(fxmlLoader);
     }
 
     static DayColumn forWeekday(Weekday weekday) {
