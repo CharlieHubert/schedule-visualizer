@@ -15,12 +15,17 @@ public class Context {
     private List<Course> courses;
 
     private Context(){
-        this.courses = List.of(
+        this.courses = createListOfGenericCourses();
+    }
+
+    @NotNull
+    private static List<Course> createListOfGenericCourses() {
+        return List.of(
                 new Course("CS", "220", "Fundamentals of Computer Science", makeHCTimeSlot(Weekday.MWF(), 1)),
                 new Course("MAT", "121", "Calculus I", makeHCTimeSlot(List.of(Weekday.Tuesday), 7)),
                 new Course("FY", "101", "First Year", makeUnassignedTimeslot()),
                 new Course("FY2", "102", "First Year2", makeUnassignedTimeslot())
-                              );
+        );
     }
 
     private static TimeSlot makeUnassignedTimeslot() {
